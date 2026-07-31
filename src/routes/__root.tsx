@@ -11,6 +11,12 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteNav } from "@/components/SiteNav";
+import { SiteFooter } from "@/components/SiteFooter";
+import { BookingProvider } from "@/components/booking/BookingContext";
+import { BookingWizard } from "@/components/booking/BookingWizard";
+import { FloatingBookButton } from "@/components/FloatingBookButton";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,19 +83,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Bro502 Barbershop | Premium Grooming in Honolulu" },
+      {
+        name: "description",
+        content:
+          "Bro502 is a premium barbershop and grooming lounge on Kona Street, Honolulu. Precision cuts, beard sculpting and hot towel shaves by appointment.",
+      },
+      { name: "author", content: "Bro502 Barbershop" },
+      { property: "og:title", content: "Bro502 Barbershop | Premium Grooming in Honolulu" },
+      {
+        property: "og:description",
+        content: "Precision cuts, beard sculpting and hot towel shaves on Kona Street, Honolulu.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
@@ -119,8 +137,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <BookingProvider>
+        <SiteNav />
+        <main>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <FloatingBookButton />
+        <BookingWizard />
+        <Toaster position="bottom-center" />
+      </BookingProvider>
     </QueryClientProvider>
   );
 }
