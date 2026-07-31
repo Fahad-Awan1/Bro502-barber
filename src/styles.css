@@ -19,6 +19,13 @@
  */
 
 @theme inline {
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-espresso: var(--espresso);
+  --color-linen: var(--linen);
+  --color-sand: var(--sand);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,26 +69,41 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.25rem;
+  --background: oklch(0.983 0.008 84);
+  --foreground: oklch(0.268 0.03 47);
+  --card: oklch(0.995 0.005 90);
+  --card-foreground: oklch(0.268 0.03 47);
+  --popover: oklch(0.995 0.005 90);
+  --popover-foreground: oklch(0.268 0.03 47);
+  --primary: oklch(0.32 0.036 45);
+  --primary-foreground: oklch(0.975 0.012 85);
+  --secondary: oklch(0.945 0.017 84);
+  --secondary-foreground: oklch(0.32 0.036 45);
+  --muted: oklch(0.945 0.017 84);
+  --muted-foreground: oklch(0.505 0.028 55);
+  --accent: oklch(0.72 0.098 76);
+  --accent-foreground: oklch(0.24 0.028 45);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.98 0.005 90);
+  --border: oklch(0.9 0.019 82);
+  --input: oklch(0.9 0.019 82);
+  --ring: oklch(0.72 0.098 76);
+  --gold: oklch(0.72 0.098 76);
+  --gold-soft: oklch(0.86 0.055 82);
+  --espresso: oklch(0.32 0.036 45);
+  --linen: oklch(0.968 0.012 84);
+  --sand: oklch(0.925 0.022 80);
+  --gradient-gold: linear-gradient(
+    120deg,
+    oklch(0.82 0.07 80),
+    oklch(0.72 0.098 76),
+    oklch(0.88 0.05 88)
+  );
+  --gradient-linen: linear-gradient(180deg, oklch(0.99 0.008 88), oklch(0.955 0.016 84));
+  --shadow-soft: 0 24px 60px -32px oklch(0.32 0.036 45 / 0.35);
+  --shadow-lift: 0 34px 70px -30px oklch(0.32 0.036 45 / 0.42);
+  --ease-lux: cubic-bezier(0.22, 0.61, 0.36, 1);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +162,87 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01";
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@utility text-gold-gradient {
+  background-image: var(--gradient-gold);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility surface-linen {
+  background-image: var(--gradient-linen);
+}
+
+@utility rule-gold {
+  background-image: var(--gradient-gold);
+  height: 1px;
+  width: 100%;
+}
+
+@utility eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility lux-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.5s var(--ease-lux),
+    box-shadow 0.5s var(--ease-lux),
+    border-color 0.5s var(--ease-lux);
+}
+
+@utility lux-card-hover {
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in oklab, var(--gold) 55%, transparent);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(4deg);
+  }
+}
+
+@utility animate-float-slow {
+  animation: float-slow 9s var(--ease-lux) infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 45s linear infinite;
 }
