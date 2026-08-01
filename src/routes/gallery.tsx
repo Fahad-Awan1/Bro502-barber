@@ -59,7 +59,7 @@ function GalleryPage() {
         intro="Work from our chairs — tap any image to view it full size."
       />
 
-      <section className="py-24 md:py-32 overflow-hidden bg-texture-grain">
+      <section className="py-24 md:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {GALLERY.map((g, i) => (

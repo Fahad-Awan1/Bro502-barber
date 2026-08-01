@@ -63,24 +63,23 @@ function Contact() {
         title="Contact & booking"
         intro="Find us in Rainier or Georgetown. Book online any time, or send us a note."
       />
-      <section className="py-24 md:py-32 overflow-hidden bg-texture-grain">
+      <section className="py-24 md:py-32 overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-2 md:px-8">
           <Reveal variant="slide-left">
-            <span className="eyebrow">Lounges</span>
-            <h2 className="mt-4 font-serif text-3xl sm:text-4xl text-foreground font-normal">Our lounges</h2>
-            <div className="mt-4 h-0.5 w-16 bg-gradient-to-r from-gold to-gold/20" aria-hidden="true" />
+            <h2 className="font-serif text-3xl sm:text-4xl">Our lounges</h2>
+            <div className="rule-gold mt-6 max-w-24" aria-hidden="true" />
 
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               {LOCATIONS.map((l) => (
                 <div
                   key={l.id}
-                  className="border border-border/80 p-5 rounded-sm bg-card shadow-[var(--shadow-soft)] gold-glow-hover"
+                  className="border border-border/80 p-5 rounded-sm bg-card/60 gold-glow-hover"
                 >
-                  <h3 className="font-serif text-lg text-forest flex items-center gap-1.5 font-normal">
-                    <MapPin className="size-4 shrink-0 text-forest animate-pulse" aria-hidden="true" />
+                  <h3 className="font-serif text-lg text-gold flex items-center gap-1.5">
+                    <MapPin className="size-4 shrink-0 animate-pulse" aria-hidden="true" />
                     {l.shortName}
                   </h3>
-                  <p className="mt-3 text-xs leading-relaxed text-foreground/90 font-normal">
+                  <p className="mt-3 text-xs leading-relaxed text-foreground/90">
                     <a
                       href={l.mapLink}
                       target="_blank"
@@ -90,7 +89,7 @@ function Contact() {
                       {l.address}
                     </a>
                   </p>
-                  <p className="mt-4 text-[0.6rem] tracking-[0.2em] text-forest uppercase font-semibold">
+                  <p className="mt-4 text-[0.6rem] tracking-[0.2em] text-gold uppercase font-medium">
                     Hours:
                   </p>
                   <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
@@ -107,14 +106,14 @@ function Contact() {
 
             <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm border-t border-border/60 pt-6">
               <div className="flex items-center gap-2">
-                <Phone className="size-4 text-forest shrink-0" aria-hidden="true" />
-                <a href={BUSINESS.phoneHref} className="hover:text-gold font-semibold text-foreground">
+                <Phone className="size-4 text-gold shrink-0" aria-hidden="true" />
+                <a href={BUSINESS.phoneHref} className="hover:text-gold font-medium">
                   {BUSINESS.phone}
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="size-4 text-forest shrink-0" aria-hidden="true" />
-                <a href={`mailto:${BUSINESS.email}`} className="hover:text-gold font-semibold text-foreground">
+                <Mail className="size-4 text-gold shrink-0" aria-hidden="true" />
+                <a href={`mailto:${BUSINESS.email}`} className="hover:text-gold font-medium">
                   {BUSINESS.email}
                 </a>
               </div>
@@ -131,15 +130,14 @@ function Contact() {
           </Reveal>
 
           <Reveal variant="scale-up" delay={0.15}>
-            <form onSubmit={submit} className="lux-card p-8 rounded-sm gold-glow-hover border-border/80" noValidate>
-              <span className="eyebrow">Message</span>
-              <h2 className="mt-3 font-serif text-3xl text-foreground font-normal">Send a note</h2>
+            <form onSubmit={submit} className="lux-card p-8 rounded-sm gold-glow-hover" noValidate>
+              <h2 className="font-serif text-3xl">Send a note</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Questions about a service, a group booking or a gift card? We're happy to help.
               </p>
               <div className="mt-7 space-y-5">
                 <label className="block">
-                  <span className="text-xs font-semibold tracking-wider text-foreground uppercase">Name</span>
+                  <span className="eyebrow">Name</span>
                   <Input
                     className="mt-2"
                     value={form.name}
@@ -151,7 +149,7 @@ function Contact() {
                   ) : null}
                 </label>
                 <label className="block">
-                  <span className="text-xs font-semibold tracking-wider text-foreground uppercase">Email</span>
+                  <span className="eyebrow">Email</span>
                   <Input
                     className="mt-2"
                     inputMode="email"
@@ -164,7 +162,7 @@ function Contact() {
                   ) : null}
                 </label>
                 <label className="block">
-                  <span className="text-xs font-semibold tracking-wider text-foreground uppercase">Message</span>
+                  <span className="eyebrow">Message</span>
                   <Textarea
                     className="mt-2"
                     rows={5}
@@ -187,7 +185,7 @@ function Contact() {
         </div>
       </section>
 
-      <section className="bg-texture-marble border-y border-border/80 py-24 md:py-32 overflow-hidden">
+      <section className="surface-linen border-y border-border py-24 md:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading eyebrow="Find us" title="Interactive map" />
@@ -196,9 +194,9 @@ function Contact() {
                 <button
                   key={l.id}
                   onClick={() => setMapLocation(l.id)}
-                  className={`border px-4 py-2 text-xs uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer rounded-sm ${
+                  className={`border px-4 py-2 text-xs uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer ${
                     mapLocation === l.id
-                      ? "border-forest bg-forest/10 text-forest font-semibold shadow-xs"
+                      ? "border-gold bg-gold/10 text-gold font-medium"
                       : "border-border text-muted-foreground hover:text-foreground"
                   }`}
                 >

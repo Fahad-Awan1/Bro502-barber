@@ -37,7 +37,7 @@ function Services() {
         intro="Every service includes a consultation, hot towel finish and styling. Prices are per visit — no hidden add-ons."
       />
 
-      <section className="py-24 md:py-32 overflow-hidden bg-texture-grain">
+      <section className="py-24 md:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <ul className="grid gap-6 md:grid-cols-2">
             {SERVICES.map((s, i) => (
@@ -46,31 +46,31 @@ function Services() {
                 key={s.id}
                 variant={i % 2 === 0 ? "slide-left" : "slide-right"}
                 delay={(i % 2) * 0.08}
-                className="lux-card lux-card-hover flex flex-col p-8 rounded-sm gold-glow-hover border-border/80"
+                className="lux-card lux-card-hover flex flex-col p-8 rounded-sm gold-glow-hover"
               >
                 <div className="flex flex-wrap gap-2 mb-4">
                   {s.tag ? (
-                    <span className="inline-flex w-fit border border-forest/30 bg-forest/8 px-3 py-1 text-[0.6rem] tracking-[0.24em] text-forest uppercase font-semibold rounded-full">
+                    <span className="inline-flex w-fit border border-gold/50 px-3 py-1 text-[0.6rem] tracking-[0.24em] text-gold uppercase font-medium">
                       {s.tag}
                     </span>
                   ) : null}
                   {s.locations &&
                   s.locations.includes("georgetown") &&
                   !s.locations.includes("rainier") ? (
-                    <span className="inline-flex w-fit border border-gold/40 bg-gold/10 px-2.5 py-1 text-[0.58rem] tracking-[0.2em] text-gold uppercase font-semibold rounded-full">
+                    <span className="inline-flex w-fit border border-gold-soft/30 bg-gold/5 px-2.5 py-1 text-[0.58rem] tracking-[0.2em] text-gold-soft uppercase font-medium">
                       Georgetown Lounge Only
                     </span>
                   ) : null}
                 </div>
                 <div className="flex items-baseline justify-between gap-4">
-                  <h2 className="font-serif text-2xl sm:text-3xl text-foreground font-normal">{s.name}</h2>
-                  <span className="font-serif text-2xl text-gold font-medium">${s.price}</span>
+                  <h2 className="font-serif text-2xl sm:text-3xl">{s.name}</h2>
+                  <span className="font-serif text-2xl text-gold">${s.price}</span>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   {s.description}
                 </p>
-                <p className="mt-6 flex items-center gap-2 text-[0.65rem] tracking-[0.22em] text-forest font-semibold uppercase">
-                  <Clock className="size-3.5 text-forest" aria-hidden="true" />
+                <p className="mt-6 flex items-center gap-2 text-[0.65rem] tracking-[0.22em] text-muted-foreground uppercase font-medium">
+                  <Clock className="size-3.5 text-gold" aria-hidden="true" />
                   {s.duration} minutes
                 </p>
                 <div className="mt-7 pt-2 mt-auto">
@@ -84,10 +84,10 @@ function Services() {
         </div>
       </section>
 
-      <section className="bg-texture-marble border-y border-border/80 py-20 text-center overflow-hidden">
+      <section className="surface-linen border-y border-border py-20 text-center overflow-hidden">
         <div className="mx-auto max-w-2xl px-5">
           <Reveal variant="scale-up">
-            <h2 className="font-serif text-3xl sm:text-4xl text-foreground font-normal">Not sure which to choose?</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl">Not sure which to choose?</h2>
             <p className="mt-4 text-sm text-muted-foreground">
               Start the booking flow — we'll walk you through service, barber and time in under a
               minute.

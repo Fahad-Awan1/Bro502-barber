@@ -48,8 +48,8 @@ function About() {
         intro="Bro 502 Barber began as a two-chair room in Seattle. A decade later, the philosophy hasn't moved an inch."
       />
 
-      {/* Founder & Origins Section */}
-      <section className="py-24 md:py-32 overflow-hidden bg-texture-grain">
+      {/* Founder & Origins Section with Image Mask Reveal & Staggered Reveal */}
+      <section className="py-24 md:py-32 overflow-hidden">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-2 md:px-8">
           <ImageMaskReveal
             src={interior1}
@@ -60,21 +60,21 @@ function About() {
           />
 
           <Reveal variant="scale-up" delay={0.15}>
-            <span className="eyebrow">The Founder</span>
-            <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl text-foreground font-normal">
+            <p className="eyebrow">The Founder</p>
+            <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl">
               Jose Gilberto Morales Simeon
             </h2>
-            <p className="mt-2 text-[0.65rem] tracking-[0.24em] text-forest uppercase font-semibold">
+            <p className="mt-1 text-[0.65rem] tracking-[0.22em] text-gold uppercase font-medium">
               CEO & Founder
             </p>
-            <div className="mt-4 h-0.5 w-16 bg-gradient-to-r from-gold to-gold/20" aria-hidden="true" />
-            <p className="mt-6 text-base leading-relaxed text-foreground/80 font-normal">
+            <div className="rule-gold mt-6 max-w-24" aria-hidden="true" />
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               Jose Gilberto Morales Simeon founded Bro 502 Barber with a clear vision: to create a
               grooming experience that rejects the rushed pace of modern shops. Committed to the
               highest standards of the craft, he established a sanctuary where every cut is a
               precise collaboration and every service is given the time it deserves.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-foreground/80 font-normal">
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               Under Jose's leadership, Bro 502 Barber has expanded to two Seattle locations—Rainier
               and Georgetown. Today, the team comprises dedicated specialists selected not only for
               their exceptional technique, but also for their commitment to hospitality and patient
@@ -84,8 +84,8 @@ function About() {
         </div>
       </section>
 
-      {/* Philosophy Section */}
-      <section className="bg-texture-marble border-y border-border/80 py-24 md:py-32 overflow-hidden">
+      {/* Philosophy Section with Staggered Scale-In Reveals */}
+      <section className="surface-linen border-y border-border py-24 md:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <SectionHeading
             eyebrow="Philosophy"
@@ -101,8 +101,8 @@ function About() {
                 delay={i * 0.12}
                 className="lux-card lux-card-hover p-8 rounded-sm gold-glow-hover"
               >
-                <span className="font-serif text-4xl text-forest font-semibold">0{i + 1}</span>
-                <h3 className="mt-4 font-serif text-2xl text-foreground font-normal">{v.title}</h3>
+                <span className="font-serif text-4xl text-gold/50">0{i + 1}</span>
+                <h3 className="mt-4 font-serif text-2xl">{v.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.body}</p>
               </Reveal>
             ))}
@@ -110,8 +110,8 @@ function About() {
         </div>
       </section>
 
-      {/* Inside the Shop */}
-      <section className="py-24 md:py-32 overflow-hidden bg-texture-grain">
+      {/* Inside the Shop Dual Image Mask Reveals */}
+      <section className="py-24 md:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <SectionHeading eyebrow="Inside the shop" title="Marble, linen and brass" />
           <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -121,7 +121,7 @@ function About() {
               width={1200}
               height={900}
               delay={0.1}
-              className="shadow-[var(--shadow-soft)] rounded-sm border border-border/70"
+              className="shadow-[var(--shadow-soft)] rounded-sm"
               imgClassName="h-[420px]"
             />
             <ImageMaskReveal
@@ -130,7 +130,7 @@ function About() {
               width={1200}
               height={1200}
               delay={0.25}
-              className="shadow-[var(--shadow-soft)] rounded-sm border border-border/70"
+              className="shadow-[var(--shadow-soft)] rounded-sm"
               imgClassName="h-[420px]"
             />
           </div>

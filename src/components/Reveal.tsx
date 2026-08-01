@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Scissors } from "lucide-react";
 import type { ReactNode } from "react";
 
 type RevealVariant = "fade-up" | "slide-left" | "slide-right" | "scale-up" | "fade";
@@ -159,20 +158,16 @@ export function SectionHeading({
 }) {
   return (
     <Reveal className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <span className="eyebrow">{eyebrow}</span>
+      <p className="eyebrow">{eyebrow}</p>
       <h2 className="mt-4 font-serif text-3xl leading-tight font-normal text-foreground sm:text-4xl md:text-5xl">
         {title}
       </h2>
       <div
-        className={`mt-6 flex items-center gap-3 ${align === "center" ? "justify-center" : ""}`}
+        className={`rule-gold mt-6 max-w-24 ${align === "center" ? "mx-auto" : ""}`}
         aria-hidden="true"
-      >
-        <span className="h-0.5 w-12 rounded-full bg-gradient-to-r from-gold/20 via-gold to-gold" />
-        <Scissors className="size-4 shrink-0 text-gold" />
-        <span className="h-0.5 w-12 rounded-full bg-gradient-to-r from-gold via-gold to-gold/20" />
-      </div>
+      />
       {intro ? (
-        <p className="mt-6 text-base leading-relaxed text-muted-foreground font-normal">{intro}</p>
+        <p className="mt-6 text-base leading-relaxed text-muted-foreground">{intro}</p>
       ) : null}
     </Reveal>
   );

@@ -59,25 +59,26 @@ function Index() {
       <ScrollVideoHero />
 
       {/* Intro Section */}
-      <section className="relative overflow-hidden bg-texture-grain py-24 md:py-32">
+      <section className="relative overflow-hidden py-24 md:py-32">
         <div
           className="pointer-events-none absolute -top-10 -left-16 size-64 rounded-full bg-gold/10 blur-3xl animate-float-slow"
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute right-0 bottom-10 size-72 rounded-full bg-forest/8 blur-3xl animate-float-slow [animation-delay:2s]"
+          className="pointer-events-none absolute right-0 bottom-10 size-72 rounded-full bg-sand/60 blur-3xl animate-float-slow [animation-delay:2s]"
           aria-hidden="true"
         />
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-2 md:px-8">
           <Reveal variant="slide-left">
-            <span className="eyebrow">Welcome to Bro 502 Barber</span>
-            <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground sm:text-4xl md:text-5xl font-normal">
+            <p className="eyebrow">Welcome to Bro 502 Barber</p>
+            <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl md:text-5xl">
               A grooming lounge, not a waiting room
             </h2>
+            <div className="rule-gold mt-6 max-w-24" aria-hidden="true" />
 
             {/* Location toggle switcher */}
             <div className="mt-6 flex items-center gap-2">
-              <span className="text-[0.6rem] tracking-[0.22em] text-forest font-semibold uppercase mr-2">
+              <span className="text-[0.6rem] tracking-[0.22em] text-muted-foreground uppercase mr-2 font-medium">
                 Select Lounge:
               </span>
               {LOCATIONS.map((l) => (
@@ -86,7 +87,7 @@ function Index() {
                   onClick={() => setSelectedLocation(l.id)}
                   className={`border px-3 py-1 text-[0.65rem] tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer rounded-sm ${
                     selectedLocation === l.id
-                      ? "border-forest bg-forest/10 text-forest font-semibold shadow-xs"
+                      ? "border-gold bg-gold/10 text-gold font-medium shadow-sm"
                       : "border-border text-muted-foreground hover:border-gold/50 hover:text-foreground"
                   }`}
                 >
@@ -95,13 +96,13 @@ function Index() {
               ))}
             </div>
 
-            <p className="mt-6 text-base leading-relaxed text-foreground/80">
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               We opened Bro 502 Barber with one idea: a man's haircut should feel like an
               appointment worth keeping. Marble, warm linen and brass — a quiet room where the
               coffee is good and the barber never rushes. Visit us at our {activeLoc.shortName}{" "}
               lounge.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-foreground/80">
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               Every visit starts with a consultation and ends with a finish you can recreate at
               home.
             </p>
@@ -119,13 +120,13 @@ function Index() {
             width={1600}
             height={1100}
             delay={0.15}
-            className="shadow-[var(--shadow-soft)] rounded-sm border border-border/70"
+            className="shadow-[var(--shadow-soft)] rounded-sm"
           />
         </div>
       </section>
 
       {/* Highlights Section */}
-      <section className="bg-texture-marble border-y border-border/80 py-24 md:py-32 overflow-hidden">
+      <section className="surface-linen border-y border-border py-24 md:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <SectionHeading
             eyebrow="The Craft"
@@ -141,10 +142,8 @@ function Index() {
                 delay={i * 0.1}
                 className="lux-card lux-card-hover p-8 rounded-sm gold-glow-hover"
               >
-                <div className="flex size-12 items-center justify-center rounded-full bg-forest/8 border border-forest/15">
-                  <h.icon className="size-6 text-forest" aria-hidden="true" />
-                </div>
-                <h3 className="mt-6 font-serif text-2xl text-foreground font-normal">{h.title}</h3>
+                <h.icon className="size-7 text-gold" aria-hidden="true" />
+                <h3 className="mt-6 font-serif text-2xl">{h.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{h.body}</p>
               </Reveal>
             ))}
@@ -153,7 +152,7 @@ function Index() {
       </section>
 
       {/* Service Highlights */}
-      <section className="bg-texture-grain py-24 md:py-32 overflow-hidden">
+      <section className="py-24 md:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <SectionHeading eyebrow="Services" title="Signature offerings" />
           <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -166,13 +165,13 @@ function Index() {
                 className="lux-card lux-card-hover p-8 rounded-sm gold-glow-hover"
               >
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-serif text-2xl text-foreground font-normal">{s.name}</h3>
-                  <span className="font-serif text-2xl text-gold font-medium">${s.price}</span>
+                  <h3 className="font-serif text-2xl">{s.name}</h3>
+                  <span className="font-serif text-xl text-gold">${s.price}</span>
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {s.description}
                 </p>
-                <p className="mt-5 text-[0.65rem] tracking-[0.22em] text-forest font-semibold uppercase">
+                <p className="mt-5 text-[0.65rem] tracking-[0.22em] text-muted-foreground uppercase font-medium">
                   {s.duration} minutes
                 </p>
               </Reveal>
@@ -181,7 +180,7 @@ function Index() {
           <Reveal delay={0.2} className="mt-12 text-center">
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 text-sm text-forest font-semibold hover:text-gold transition-colors tracking-wide"
+              className="inline-flex items-center gap-2 text-sm text-gold hover:underline font-medium tracking-wide"
             >
               View the full menu <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
@@ -190,7 +189,7 @@ function Index() {
       </section>
 
       {/* Before / After Transformation Slider */}
-      <section className="surface-ivory border-y border-border/80 py-24 md:py-32 overflow-hidden">
+      <section className="py-24 md:py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <SectionHeading
             eyebrow="Transformations"
@@ -212,13 +211,13 @@ function Index() {
       <InstagramStrip />
 
       {/* Hours + CTA */}
-      <section className="bg-texture-marble border-y border-border/80 py-24 md:py-32 overflow-hidden">
+      <section className="surface-linen border-y border-border py-24 md:py-32 overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:px-8">
           <Reveal variant="slide-left">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span className="eyebrow">{activeLoc.shortName} Hours</span>
-                <h2 className="mt-4 font-serif text-3xl sm:text-4xl text-foreground font-normal">Open for you</h2>
+                <p className="eyebrow">{activeLoc.shortName} Hours</p>
+                <h2 className="mt-4 font-serif text-3xl sm:text-4xl">Open for you</h2>
               </div>
 
               <div className="flex gap-2">
@@ -228,7 +227,7 @@ function Index() {
                     onClick={() => setSelectedLocation(l.id)}
                     className={`border px-3 py-1.5 text-[0.65rem] tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer rounded-sm ${
                       selectedLocation === l.id
-                        ? "border-forest bg-forest/10 text-forest font-semibold shadow-xs"
+                        ? "border-gold bg-gold/10 text-gold font-medium shadow-sm"
                         : "border-border text-muted-foreground hover:border-gold/50 hover:text-foreground"
                     }`}
                   >
@@ -238,7 +237,7 @@ function Index() {
               </div>
             </div>
 
-            <ul className="mt-8 divide-y divide-border/60">
+            <ul className="mt-8 divide-y divide-border">
               {activeLoc.hours.map((h) => (
                 <li key={h.day} className="flex justify-between gap-4 py-3 text-sm">
                   <span className="text-muted-foreground">{h.day}</span>
@@ -249,14 +248,14 @@ function Index() {
           </Reveal>
 
           <Reveal variant="scale-up" delay={0.15} className="flex flex-col justify-center">
-            <span className="eyebrow">Ready when you are</span>
-            <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl text-foreground font-normal">
+            <p className="eyebrow">Ready when you are</p>
+            <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl">
               Reserve your chair in {activeLoc.shortName}
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               {activeLoc.address}
               <br />
-              <a href={BUSINESS.phoneHref} className="text-forest font-semibold hover:text-gold transition-colors">
+              <a href={BUSINESS.phoneHref} className="text-gold hover:underline font-medium">
                 {BUSINESS.phone}
               </a>
             </p>
