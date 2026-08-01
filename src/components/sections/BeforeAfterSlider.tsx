@@ -102,7 +102,7 @@ export function BeforeAfterSlider({
           loading="lazy"
         />
         {/* Before label */}
-        <span className="absolute bottom-4 right-4 rounded-full border border-background/40 bg-espresso/80 px-3 py-1 text-[0.65rem] tracking-[0.25em] text-background/90 uppercase backdrop-blur-sm font-medium">
+        <span className="absolute bottom-4 right-4 rounded-full border border-amber-100/30 bg-espresso/80 px-3 py-1 text-[0.65rem] tracking-[0.25em] text-amber-100 uppercase backdrop-blur-sm font-medium">
           Before
         </span>
       </div>

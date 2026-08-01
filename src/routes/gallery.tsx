@@ -120,14 +120,14 @@ function GalleryPage() {
               className="max-h-[82svh] max-w-[92vw] object-contain shadow-[var(--shadow-lift)] rounded-sm border border-gold/30"
               onClick={(e) => e.stopPropagation()}
             />
-            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 text-center text-xs tracking-wider text-background/90 font-medium">
+            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 text-center text-xs tracking-wider text-amber-100/90 font-medium">
               {GALLERY[index].alt}
             </p>
             <button
               type="button"
               aria-label="Close"
               onClick={close}
-              className="absolute top-5 right-5 rounded-full border border-background/30 p-2 text-background transition-colors hover:border-gold hover:text-gold cursor-pointer"
+              className="absolute top-5 right-5 rounded-full border border-amber-100/30 p-2 text-amber-100 transition-colors hover:border-gold hover:text-gold cursor-pointer"
             >
               <X className="size-5" />
             </button>
@@ -138,7 +138,7 @@ function GalleryPage() {
                 e.stopPropagation();
                 step(-1);
               }}
-              className="absolute top-1/2 left-3 -translate-y-1/2 rounded-full border border-background/30 p-2 text-background transition-colors hover:border-gold hover:text-gold cursor-pointer"
+              className="absolute top-1/2 left-3 -translate-y-1/2 rounded-full border border-amber-100/30 p-2 text-amber-100 transition-colors hover:border-gold hover:text-gold cursor-pointer"
             >
               <ChevronLeft className="size-5" />
             </button>
@@ -149,7 +149,7 @@ function GalleryPage() {
                 e.stopPropagation();
                 step(1);
               }}
-              className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full border border-background/30 p-2 text-background transition-colors hover:border-gold hover:text-gold cursor-pointer"
+              className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full border border-amber-100/30 p-2 text-amber-100 transition-colors hover:border-gold hover:text-gold cursor-pointer"
             >
               <ChevronRight className="size-5" />
             </button>

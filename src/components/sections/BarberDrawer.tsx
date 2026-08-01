@@ -91,7 +91,7 @@ export function BarberDrawer({ barber, onClose, onBook }: Props) {
                 type="button"
                 aria-label="Close barber profile"
                 onClick={onClose}
-                className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full border border-background/30 bg-espresso/70 text-background backdrop-blur-sm transition-colors hover:border-gold hover:text-gold cursor-pointer"
+                className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full border border-gold/40 bg-espresso/80 text-gold-soft backdrop-blur-sm transition-colors hover:border-gold hover:text-gold cursor-pointer"
               >
                 <X className="size-4" />
               </button>

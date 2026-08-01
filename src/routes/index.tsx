@@ -10,8 +10,8 @@ import { GoldButton } from "@/components/ui/GoldButton";
 import { useBooking } from "@/components/booking/BookingContext";
 import { SERVICES, BUSINESS, LOCATIONS } from "@/lib/site-data";
 import interior1 from "@/assets/interior-1.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
+import beforeHaircut from "@/assets/before-haircut.png";
+import afterHaircut from "@/assets/after-haircut.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -198,10 +198,10 @@ function Index() {
           />
           <Reveal delay={0.15} className="mt-10">
             <BeforeAfterSlider
-              beforeSrc={gallery1}
-              afterSrc={gallery5}
-              beforeAlt="Uncut hair — before Bro 502 Barber visit"
-              afterAlt="Precision fade — after Bro 502 Barber"
+              beforeSrc={beforeHaircut}
+              afterSrc={afterHaircut}
+              beforeAlt="Overgrown messy hair — before Bro 502 Barber visit"
+              afterAlt="Precision fade & styled pompadour — after Bro 502 Barber"
             />
           </Reveal>
         </div>
