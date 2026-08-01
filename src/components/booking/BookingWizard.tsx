@@ -361,7 +361,7 @@ export function BookingWizard() {
                               className="size-12 rounded-full object-cover"
                             />
                           ) : (
-                            <span className="grid size-12 shrink-0 place-items-center rounded-full bg-sand text-xs text-espresso">
+                            <span className="grid size-12 shrink-0 place-items-center rounded-full bg-sand dark:bg-card border border-border text-xs text-foreground font-medium">
                               Any
                             </span>
                           )}

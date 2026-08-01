@@ -16,6 +16,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BookingProvider } from "@/components/booking/BookingContext";
+import { ThemeProvider } from "@/components/ThemeContext";
 import { BookingWizard } from "@/components/booking/BookingWizard";
 import { FloatingBookButton } from "@/components/FloatingBookButton";
 import { AvailabilityTicker } from "@/components/sections/AvailabilityTicker";
@@ -158,20 +159,22 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <BookingProvider>
-        <AvailabilityTicker />
-        <SiteNav />
-        <main>
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <PageTransitionWrapper>
-            <Outlet />
-          </PageTransitionWrapper>
-        </main>
-        <SiteFooter />
-        <FloatingBookButton />
-        <BookingWizard />
-        <Toaster position="bottom-center" />
-      </BookingProvider>
+      <ThemeProvider>
+        <BookingProvider>
+          <AvailabilityTicker />
+          <SiteNav />
+          <main>
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <PageTransitionWrapper>
+              <Outlet />
+            </PageTransitionWrapper>
+          </main>
+          <SiteFooter />
+          <FloatingBookButton />
+          <BookingWizard />
+          <Toaster position="bottom-center" />
+        </BookingProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
