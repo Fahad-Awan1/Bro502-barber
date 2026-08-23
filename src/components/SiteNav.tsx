@@ -1,11 +1,16 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, MapPin, Sun, Moon } from "lucide-react";
+import { Menu, X, MapPin, ChevronDown, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useBooking } from "@/components/booking/BookingContext";
-import { useTheme } from "@/components/ThemeContext";
 import logoSrc from "@/assets/logo.png";
 import { GoldButton } from "@/components/ui/GoldButton";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const LINKS = [
   { to: "/", label: "Home" },
@@ -22,7 +27,6 @@ export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { openBooking, selectedLocation, setSelectedLocation } = useBooking();
-  const { theme, toggleTheme } = useTheme();
   const routerState = useRouterState();
 
   // Close mobile menu on route change
@@ -53,7 +57,7 @@ export function SiteNav() {
           layout
           className={`transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
             scrolled
-              ? "rounded-full border border-gold/30 bg-espresso/95 dark:bg-card/95 shadow-[0_8px_32px_-8px_oklch(0.32_0.036_45/0.55),0_0_0_1px_oklch(0.72_0.098_76/0.12)] backdrop-blur-xl"
+              ? "rounded-full border border-border bg-background/95 dark:bg-card/95 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] backdrop-blur-xl"
               : "border-b border-transparent bg-transparent"
           }`}
         >
@@ -63,56 +67,79 @@ export function SiteNav() {
             }`}
             aria-label="Main"
           >
-            {/* Logo */}
+            {/* Logo & Location Dropdown */}
             <div className="flex items-center gap-3 min-w-0">
               <Link
                 to="/"
-                className="flex shrink-0 items-center"
+                className="flex shrink-0 items-center gap-2.5 group"
                 onClick={() => setMenuOpen(false)}
               >
-                <img
-                  src={logoSrc}
-                  alt="Bro 502 Barbershop – Gentlemen's Club"
-                  className={`object-contain transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
-                    scrolled ? "h-10 w-10" : "h-14 w-14"
-                  }`}
-                />
+                <div className="rounded-full border border-white/40 p-1 bg-zinc-950/90 transition-all duration-300 group-hover:border-white/60 group-hover:scale-105 shadow-[0_0_15px_rgba(255,255,255,0.25)]">
+                  <img
+                    src={logoSrc}
+                    alt="Bro 502 Barbershop – Gentlemen's Club"
+                    className={`object-contain transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
+                      scrolled ? "h-8 w-8" : "h-11 w-11"
+                    }`}
+                  />
+                </div>
+                <span className={`font-serif tracking-tight transition-all duration-500 leading-none ${scrolled ? "text-xl" : "text-2xl sm:text-3xl"}`}>
+                  <span className="text-white font-bold group-hover:text-zinc-200">Bro</span>
+                  <span className="text-red-500 font-extrabold drop-shadow-[0_0_12px_rgba(239,68,68,0.6)]">502</span>
+                </span>
               </Link>
 
               <div
-                className={`flex items-center gap-1 border-l pl-3 shrink-0 transition-colors duration-500 ${
-                  scrolled ? "border-gold/20" : "border-border"
+                className={`flex items-center gap-1.5 border-l pl-3 shrink-0 transition-colors duration-500 ${
+                  scrolled ? "border-border" : "border-border"
                 }`}
               >
                 <MapPin
-                  className="size-3 shrink-0 animate-pulse text-gold"
+                  className="size-3 shrink-0 animate-pulse text-red-500"
                   aria-hidden="true"
                 />
-                <select
-                  value={selectedLocation}
-                  onChange={(e) =>
-                    setSelectedLocation(e.target.value as "rainier" | "georgetown")
-                  }
-                  aria-label="Select Barbershop Location"
-                  className={`cursor-pointer bg-transparent py-0.5 pr-5 text-[0.65rem] font-medium tracking-[0.2em] uppercase transition-colors focus:outline-none appearance-none ${
-                    scrolled
-                      ? "text-background/80 hover:text-background dark:text-foreground/80 dark:hover:text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23c5a880' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                    backgroundPosition: "right center",
-                    backgroundSize: "1em 1em",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <option value="rainier" className="bg-background text-foreground">
-                    Rainier
-                  </option>
-                  <option value="georgetown" className="bg-background text-foreground">
-                    Georgetown
-                  </option>
-                </select>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center gap-1.5 text-[0.65rem] font-medium tracking-[0.2em] uppercase text-foreground/90 hover:text-white transition-colors focus:outline-none cursor-pointer group py-1">
+                    <span>{selectedLocation === "rainier" ? "Rainier" : "Georgetown"}</span>
+                    <ChevronDown className="size-3 text-red-500 transition-transform duration-300 group-data-[state=open]:rotate-180" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    align="start"
+                    sideOffset={8}
+                    className="min-w-[140px] border border-zinc-800 bg-zinc-950/98 p-1.5 shadow-2xl rounded-lg z-[100] backdrop-blur-xl"
+                  >
+                    <DropdownMenuItem
+                      onClick={() => setSelectedLocation("rainier")}
+                      className={`cursor-pointer px-3 py-2 text-[0.68rem] tracking-[0.18em] uppercase font-medium rounded-md transition-colors focus:bg-red-600/20 focus:text-white ${
+                        selectedLocation === "rainier"
+                          ? "bg-red-600/15 text-red-400 font-semibold"
+                          : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
+                      }`}
+                    >
+                      <span className="flex items-center justify-between w-full">
+                        Rainier
+                        {selectedLocation === "rainier" && (
+                          <Check className="size-3.5 text-red-500" />
+                        )}
+                      </span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => setSelectedLocation("georgetown")}
+                      className={`cursor-pointer px-3 py-2 text-[0.68rem] tracking-[0.18em] uppercase font-medium rounded-md transition-colors focus:bg-red-600/20 focus:text-white ${
+                        selectedLocation === "georgetown"
+                          ? "bg-red-600/15 text-red-400 font-semibold"
+                          : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
+                      }`}
+                    >
+                      <span className="flex items-center justify-between w-full">
+                        Georgetown
+                        {selectedLocation === "georgetown" && (
+                          <Check className="size-3.5 text-red-500" />
+                        )}
+                      </span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
 
@@ -124,38 +151,15 @@ export function SiteNav() {
                     <Link
                       to={l.to}
                       activeOptions={{ exact: l.to === "/" }}
-                      activeProps={{ className: "text-gold" }}
-                      className={`relative text-[0.68rem] tracking-[0.22em] uppercase transition-colors duration-300 group ${
-                        scrolled
-                          ? "text-background/80 hover:text-background dark:text-foreground/80 dark:hover:text-foreground"
-                          : "text-muted-foreground hover:text-foreground"
-                      }`}
+                      activeProps={{ className: "text-red-500 font-semibold" }}
+                      className="relative text-[0.68rem] tracking-[0.22em] uppercase transition-colors duration-300 group text-foreground/80 hover:text-foreground"
                     >
                       {l.label}
-                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-red-600 transition-all duration-300 group-hover:w-full" />
                     </Link>
                   </li>
                 ))}
               </ul>
-
-              {/* Desktop Theme Toggle Button */}
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className={`flex size-8 items-center justify-center rounded-full border transition-all duration-300 cursor-pointer ${
-                  scrolled
-                    ? "border-gold/30 text-gold hover:border-gold hover:bg-gold/10"
-                    : "border-border text-foreground hover:border-gold/60 hover:text-gold"
-                }`}
-                aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-                title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-              >
-                {theme === "dark" ? (
-                  <Sun className="size-4 text-gold animate-spin-slow" />
-                ) : (
-                  <Moon className="size-4 text-foreground hover:text-gold" />
-                )}
-              </button>
 
               <GoldButton
                 size="sm"
@@ -166,28 +170,11 @@ export function SiteNav() {
               </GoldButton>
             </div>
 
-            {/* Mobile Controls (Theme Toggle + Hamburger) */}
+            {/* Mobile Controls (Hamburger) */}
             <div className="flex items-center gap-2 lg:hidden">
               <button
                 type="button"
-                onClick={toggleTheme}
-                className={`flex size-8 items-center justify-center rounded-full border transition-all duration-300 cursor-pointer ${
-                  scrolled
-                    ? "border-gold/30 text-gold hover:border-gold"
-                    : "border-border text-foreground hover:border-gold/60"
-                }`}
-                aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-              >
-                {theme === "dark" ? <Sun className="size-4 text-gold" /> : <Moon className="size-4" />}
-              </button>
-
-              <button
-                type="button"
-                className={`shrink-0 rounded-full border p-2 transition-colors duration-300 ${
-                  scrolled
-                    ? "border-gold/30 text-background dark:text-foreground hover:border-gold"
-                    : "border-border text-foreground"
-                }`}
+                className="shrink-0 rounded-full border border-border p-2 text-foreground hover:border-foreground/60 transition-colors duration-300"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
                 onClick={() => setMenuOpen((v) => !v)}
@@ -209,7 +196,7 @@ export function SiteNav() {
               transition={{ duration: 0.4, ease: LUXURY_EASE }}
               className={`overflow-hidden lg:hidden ${
                 scrolled
-                  ? "mt-2 rounded-2xl border border-gold/20 bg-espresso/95 dark:bg-card/95 backdrop-blur-xl shadow-[0_8px_32px_-8px_oklch(0.32_0.036_45/0.6)]"
+                  ? "mt-2 rounded-2xl border border-border bg-background/95 dark:bg-card/95 backdrop-blur-xl shadow-2xl"
                   : "border-t border-border bg-background/97 backdrop-blur-xl"
               }`}
             >
@@ -219,34 +206,14 @@ export function SiteNav() {
                     <Link
                       to={l.to}
                       activeOptions={{ exact: l.to === "/" }}
-                      activeProps={{ className: "text-gold" }}
+                      activeProps={{ className: "text-primary font-bold" }}
                       onClick={() => setMenuOpen(false)}
-                      className={`block py-2.5 font-serif text-xl transition-colors ${
-                        scrolled ? "text-background/90 dark:text-foreground/90 hover:text-gold" : "text-foreground"
-                      }`}
+                      className="block py-2.5 font-serif text-xl transition-colors text-foreground hover:text-primary"
                     >
                       {l.label}
                     </Link>
                   </li>
                 ))}
-                <li className="flex items-center justify-between pt-3 border-t border-border/40 mt-2">
-                  <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Theme</span>
-                  <button
-                    type="button"
-                    onClick={toggleTheme}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/40 text-xs uppercase tracking-wider text-gold hover:bg-gold/10 transition-colors"
-                  >
-                    {theme === "dark" ? (
-                      <>
-                        <Sun className="size-3.5" /> Light Mode
-                      </>
-                    ) : (
-                      <>
-                        <Moon className="size-3.5 text-foreground" /> Dark Mode
-                      </>
-                    )}
-                  </button>
-                </li>
                 <li className="pt-3">
                   <GoldButton
                     className="w-full"

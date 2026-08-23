@@ -9,10 +9,10 @@ const base =
   "relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-sm font-sans uppercase tracking-[0.18em] transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-45";
 
 const variants: Record<Variant, string> = {
-  gold: "bg-espresso dark:bg-gold text-primary-foreground dark:text-espresso font-semibold shadow-[var(--shadow-soft)] hover:bg-gold hover:text-accent-foreground dark:hover:bg-gold-soft dark:hover:text-espresso hover:shadow-[var(--shadow-lift)]",
+  gold: "bg-red-600 text-white font-semibold shadow-[0_4px_20px_-4px_rgba(220,38,38,0.5)] hover:bg-red-700 dark:hover:bg-red-500 hover:shadow-[0_8px_25px_-4px_rgba(220,38,38,0.65)] active:scale-[0.98]",
   outline:
-    "border border-gold/60 bg-transparent text-foreground hover:border-gold hover:bg-gold/10 dark:hover:bg-gold/20",
-  ghost: "text-foreground hover:text-gold",
+    "border border-foreground/30 bg-transparent text-foreground hover:border-red-600 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-600/10",
+  ghost: "text-foreground hover:text-red-500 dark:hover:text-red-400",
 };
 
 const sizes: Record<Size, string> = {

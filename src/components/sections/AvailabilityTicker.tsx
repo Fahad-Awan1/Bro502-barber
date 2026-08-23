@@ -140,14 +140,14 @@ export function AvailabilityTicker() {
                   <span className="text-slate-400">·</span>
                   {current.isOpen ? (
                     <>
-                      <span className="flex items-center gap-1 text-[0.65rem] tracking-wider text-amber-100/90">
-                        <span className="size-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+                      <span className="flex items-center gap-1 text-[0.65rem] tracking-wider text-zinc-200">
+                        <span className="size-1.5 rounded-full bg-red-500 inline-block animate-pulse" />
                         Open now
                       </span>
                       {current.nextSlot && (
                         <>
                           <span className="text-slate-400">·</span>
-                          <span className="text-[0.65rem] tracking-wider text-amber-100/80">
+                          <span className="text-[0.65rem] tracking-wider text-zinc-300">
                             Next slot: <span className="text-gold font-medium">{current.nextSlot}</span>
                           </span>
                           <button
@@ -161,7 +161,7 @@ export function AvailabilityTicker() {
                       )}
                     </>
                   ) : (
-                    <span className="text-[0.65rem] tracking-wider text-amber-100/70">
+                    <span className="text-[0.65rem] tracking-wider text-zinc-400">
                       {current.closingTime
                         ? `Closed · Opens 9:00 AM`
                         : "Closed today"}
@@ -190,7 +190,7 @@ export function AvailabilityTicker() {
               type="button"
               aria-label="Dismiss availability banner"
               onClick={dismiss}
-              className="ml-2 shrink-0 rounded-full p-1 text-amber-100/60 transition-colors hover:text-gold cursor-pointer"
+              className="ml-2 shrink-0 rounded-full p-1 text-zinc-400 transition-colors hover:text-gold cursor-pointer"
             >
               <X className="size-3.5" />
             </button>

@@ -257,7 +257,7 @@ export function BookingWizard() {
                 key={s}
                 className={cn(
                   "h-0.5 flex-1 rounded-full transition-colors duration-500",
-                  i <= step ? "bg-gold" : "bg-border",
+                  i <= step ? "bg-red-600" : "bg-border",
                 )}
               />
             ))}
@@ -283,23 +283,23 @@ export function BookingWizard() {
                         type="button"
                         onClick={() => setLocationId(l.id)}
                         className={cn(
-                          "w-full rounded-sm border p-5 text-left transition-all duration-400 flex flex-col justify-between h-full min-h-[170px] cursor-pointer",
+                          "w-full rounded-sm border p-5 text-left transition-all duration-300 flex flex-col justify-between h-full min-h-[170px] cursor-pointer",
                           locationId === l.id
-                            ? "border-gold bg-gold/10"
-                            : "border-border hover:border-gold/60",
+                            ? "border-red-600 bg-red-600/10 dark:bg-red-950/40 shadow-sm"
+                            : "border-border hover:border-foreground/50",
                         )}
                       >
                         <div>
-                          <p className="font-serif text-lg text-gold flex items-center gap-1.5">
-                            <MapPin className="size-4 shrink-0" aria-hidden="true" />
+                          <p className="font-serif text-lg text-foreground font-semibold flex items-center gap-1.5">
+                            <MapPin className="size-4 shrink-0 text-red-500" aria-hidden="true" />
                             {l.shortName}
                           </p>
                           <p className="mt-2.5 text-xs text-muted-foreground leading-relaxed">
                             {l.address}
                           </p>
                         </div>
-                        <div className="mt-4 pt-3 border-t border-border/40 w-full">
-                          <p className="text-[0.55rem] tracking-[0.2em] text-gold uppercase font-semibold">
+                        <div className="mt-4 pt-3 border-t border-border/60 w-full">
+                          <p className="text-[0.55rem] tracking-[0.2em] text-foreground/80 uppercase font-semibold">
                             Today's Hours:
                           </p>
                           <p className="mt-0.5 text-xs text-muted-foreground">
@@ -321,15 +321,15 @@ export function BookingWizard() {
                         type="button"
                         onClick={() => setServiceId(s.id)}
                         className={cn(
-                          "w-full rounded-sm border p-4 text-left transition-all duration-400 cursor-pointer",
+                          "w-full rounded-sm border p-4 text-left transition-all duration-300 cursor-pointer",
                           serviceId === s.id
-                            ? "border-gold bg-gold/10"
-                            : "border-border hover:border-gold/60",
+                            ? "border-red-600 bg-red-600/10 dark:bg-red-950/40 shadow-sm"
+                            : "border-border hover:border-foreground/50",
                         )}
                       >
-                        <p className="font-serif text-lg">{s.name}</p>
+                        <p className="font-serif text-lg font-semibold">{s.name}</p>
                         <p className="mt-1 text-xs text-muted-foreground">
-                          ${s.price} · {s.duration} min
+                          <span className="text-red-500 font-semibold">${s.price}</span> · {s.duration} min
                         </p>
                       </button>
                     </li>
@@ -347,10 +347,10 @@ export function BookingWizard() {
                           type="button"
                           onClick={() => setBarberId(id)}
                           className={cn(
-                            "flex w-full items-center gap-3 rounded-sm border p-3 text-left transition-all duration-400 cursor-pointer",
+                            "flex w-full items-center gap-3 rounded-sm border p-3 text-left transition-all duration-300 cursor-pointer",
                             barberId === id
-                              ? "border-gold bg-gold/10"
-                              : "border-border hover:border-gold/60",
+                              ? "border-red-600 bg-red-600/10 dark:bg-red-950/40 shadow-sm"
+                              : "border-border hover:border-foreground/50",
                           )}
                         >
                           {b ? (
@@ -361,12 +361,12 @@ export function BookingWizard() {
                               className="size-12 rounded-full object-cover"
                             />
                           ) : (
-                            <span className="grid size-12 shrink-0 place-items-center rounded-full bg-sand dark:bg-card border border-border text-xs text-foreground font-medium">
+                            <span className="grid size-12 shrink-0 place-items-center rounded-full bg-secondary border border-border text-xs text-foreground font-medium">
                               Any
                             </span>
                           )}
                           <span className="min-w-0">
-                            <span className="block truncate font-serif text-base">
+                            <span className="block truncate font-serif text-base font-medium">
                               {b?.name ?? ANY_BARBER.name}
                             </span>
                             <span className="block truncate text-xs text-muted-foreground">
@@ -407,10 +407,10 @@ export function BookingWizard() {
                                 className={cn(
                                   "w-full rounded-sm border px-2 py-2 text-xs transition-all duration-300 cursor-pointer",
                                   disabled
-                                    ? "cursor-not-allowed border-border/60 text-muted-foreground/40 line-through"
+                                    ? "cursor-not-allowed border-border/40 text-muted-foreground/40 line-through"
                                     : time === t
-                                      ? "border-gold bg-gold/15 text-foreground"
-                                      : "border-border hover:border-gold/60",
+                                      ? "border-red-600 bg-red-600 text-white font-medium shadow-sm"
+                                      : "border-border hover:border-foreground/50",
                                 )}
                               >
                                 {t}

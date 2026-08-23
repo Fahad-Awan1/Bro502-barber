@@ -66,7 +66,7 @@ export function ScrollVideoHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
-          className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-amber-50/90 sm:text-base font-normal drop-shadow-sm"
+          className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-zinc-200 sm:text-base font-normal drop-shadow-sm"
         >
           Precision cuts, hot towel rituals and an unhurried chair on {addressLabel}.
         </motion.p>
