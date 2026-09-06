@@ -85,11 +85,10 @@ function Index() {
                 <button
                   key={l.id}
                   onClick={() => setSelectedLocation(l.id)}
-                  className={`border px-3 py-1 text-[0.65rem] tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer rounded-sm ${
-                    selectedLocation === l.id
+                  className={`border px-3 py-1 text-[0.65rem] tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer rounded-sm ${selectedLocation === l.id
                       ? "border-gold bg-gold/10 text-gold font-medium shadow-sm"
                       : "border-border text-muted-foreground hover:border-gold/50 hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   {l.shortName}
                 </button>
@@ -225,11 +224,10 @@ function Index() {
                   <button
                     key={l.id}
                     onClick={() => setSelectedLocation(l.id)}
-                    className={`border px-3 py-1.5 text-[0.65rem] tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer rounded-sm ${
-                      selectedLocation === l.id
+                    className={`border px-3 py-1.5 text-[0.65rem] tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer rounded-sm ${selectedLocation === l.id
                         ? "border-gold bg-gold/10 text-gold font-medium shadow-sm"
                         : "border-border text-muted-foreground hover:border-gold/50 hover:text-foreground"
-                    }`}
+                      }`}
                   >
                     {l.shortName}
                   </button>

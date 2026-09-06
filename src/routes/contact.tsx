@@ -194,11 +194,10 @@ function Contact() {
                 <button
                   key={l.id}
                   onClick={() => setMapLocation(l.id)}
-                  className={`border px-4 py-2 text-xs uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer ${
-                    mapLocation === l.id
+                  className={`border px-4 py-2 text-xs uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer ${mapLocation === l.id
                       ? "border-gold bg-gold/10 text-gold font-medium"
                       : "border-border text-muted-foreground hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   {l.shortName}
                 </button>

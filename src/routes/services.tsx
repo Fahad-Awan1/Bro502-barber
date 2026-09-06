@@ -55,8 +55,8 @@ function Services() {
                     </span>
                   ) : null}
                   {s.locations &&
-                  s.locations.includes("georgetown") &&
-                  !s.locations.includes("rainier") ? (
+                    s.locations.includes("georgetown") &&
+                    !s.locations.includes("rainier") ? (
                     <span className="inline-flex w-fit border border-gold-soft/30 bg-gold/5 px-2.5 py-1 text-[0.58rem] tracking-[0.2em] text-gold-soft uppercase font-medium">
                       Georgetown Lounge Only
                     </span>

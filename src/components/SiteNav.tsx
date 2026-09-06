@@ -47,24 +47,21 @@ export function SiteNav() {
       <motion.header
         layout
         transition={{ duration: 0.5, ease: LUXURY_EASE }}
-        className={`fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
-          scrolled
+        className={`fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${scrolled
             ? "inset-x-4 top-3 md:inset-x-8 lg:inset-x-auto lg:left-1/2 lg:-translate-x-1/2 lg:w-[min(940px,calc(100vw-4rem))]"
             : "inset-x-0 top-0"
-        }`}
+          }`}
       >
         <motion.div
           layout
-          className={`transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
-            scrolled
+          className={`transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${scrolled
               ? "rounded-full border border-border bg-background/95 dark:bg-card/95 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] backdrop-blur-xl"
               : "border-b border-transparent bg-transparent"
-          }`}
+            }`}
         >
           <nav
-            className={`mx-auto grid grid-cols-[1fr_auto] items-center gap-4 transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
-              scrolled ? "px-4 py-2.5 md:px-6" : "max-w-7xl px-5 py-4 md:px-8"
-            }`}
+            className={`mx-auto grid grid-cols-[1fr_auto] items-center gap-4 transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${scrolled ? "px-4 py-2.5 md:px-6" : "max-w-7xl px-5 py-4 md:px-8"
+              }`}
             aria-label="Main"
           >
             {/* Logo & Location Dropdown */}
@@ -78,9 +75,8 @@ export function SiteNav() {
                   <img
                     src={logoSrc}
                     alt="Bro 502 Barbershop – Gentlemen's Club"
-                    className={`object-contain transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${
-                      scrolled ? "h-8 w-8" : "h-11 w-11"
-                    }`}
+                    className={`object-contain transition-all duration-500 ease-[cubic-bezier(0.22,0.61,0.36,1)] ${scrolled ? "h-8 w-8" : "h-11 w-11"
+                      }`}
                   />
                 </div>
                 <span className={`font-serif tracking-tight transition-all duration-500 leading-none ${scrolled ? "text-xl" : "text-2xl sm:text-3xl"}`}>
@@ -90,9 +86,8 @@ export function SiteNav() {
               </Link>
 
               <div
-                className={`flex items-center gap-1.5 border-l pl-3 shrink-0 transition-colors duration-500 ${
-                  scrolled ? "border-border" : "border-border"
-                }`}
+                className={`flex items-center gap-1.5 border-l pl-3 shrink-0 transition-colors duration-500 ${scrolled ? "border-border" : "border-border"
+                  }`}
               >
                 <MapPin
                   className="size-3 shrink-0 animate-pulse text-red-500"
@@ -110,11 +105,10 @@ export function SiteNav() {
                   >
                     <DropdownMenuItem
                       onClick={() => setSelectedLocation("rainier")}
-                      className={`cursor-pointer px-3 py-2 text-[0.68rem] tracking-[0.18em] uppercase font-medium rounded-md transition-colors focus:bg-red-600/20 focus:text-white ${
-                        selectedLocation === "rainier"
+                      className={`cursor-pointer px-3 py-2 text-[0.68rem] tracking-[0.18em] uppercase font-medium rounded-md transition-colors focus:bg-red-600/20 focus:text-white ${selectedLocation === "rainier"
                           ? "bg-red-600/15 text-red-400 font-semibold"
                           : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
-                      }`}
+                        }`}
                     >
                       <span className="flex items-center justify-between w-full">
                         Rainier
@@ -125,11 +119,10 @@ export function SiteNav() {
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => setSelectedLocation("georgetown")}
-                      className={`cursor-pointer px-3 py-2 text-[0.68rem] tracking-[0.18em] uppercase font-medium rounded-md transition-colors focus:bg-red-600/20 focus:text-white ${
-                        selectedLocation === "georgetown"
+                      className={`cursor-pointer px-3 py-2 text-[0.68rem] tracking-[0.18em] uppercase font-medium rounded-md transition-colors focus:bg-red-600/20 focus:text-white ${selectedLocation === "georgetown"
                           ? "bg-red-600/15 text-red-400 font-semibold"
                           : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
-                      }`}
+                        }`}
                     >
                       <span className="flex items-center justify-between w-full">
                         Georgetown
@@ -194,11 +187,10 @@ export function SiteNav() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: LUXURY_EASE }}
-              className={`overflow-hidden lg:hidden ${
-                scrolled
+              className={`overflow-hidden lg:hidden ${scrolled
                   ? "mt-2 rounded-2xl border border-border bg-background/95 dark:bg-card/95 backdrop-blur-xl shadow-2xl"
                   : "border-t border-border bg-background/97 backdrop-blur-xl"
-              }`}
+                }`}
             >
               <ul className="space-y-1 px-5 py-5">
                 {LINKS.map((l) => (
